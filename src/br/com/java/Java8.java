@@ -17,31 +17,24 @@ public class Java8 {
 		palavras.add("Python");
 		palavras.add("Spring Boot");
 		
-		Comparator<String> comparato = new ComparatorStringPorTamanho();
+		//Comparator<String> comparato = new ComparatorStringPorTamanho();
 		//Collections.sort(palavras, comparato);
-		palavras.sort(comparato);
+		//palavras.sort(comparato);
 		
-		Consumer<String> consume = new ConsumidorDeString();
-		palavras.forEach(consume);
+		palavras.sort((s1, s2) -> Integer.compare(s1.length(), s2.length()));
+		
+		palavras.forEach(s -> System.out.println(s));
 		
 		System.out.println(palavras);
 	}
 }
 
-class ConsumidorDeString implements Consumer<String> {
-
-	@Override
-	public void accept(String s) {
-		System.out.println(s);		
-	}
-}
-
-class ComparatorStringPorTamanho implements Comparator<String> {
-	public int compare(String s1, String s2) {
-		if(s1.length() < s2.length()) 
-			return -1;
-		if(s1.length() > s2.length())
-			return 1;
-		return 0;
-	}
-}
+//class ComparatorStringPorTamanho implements Comparator<String> {
+//	public int compare(String s1, String s2) {
+//		if(s1.length() < s2.length()) 
+//			return -1;
+//		if(s1.length() > s2.length())
+//			return 1;
+//		return 0;
+//	}
+//}
